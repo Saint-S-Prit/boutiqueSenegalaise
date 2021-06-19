@@ -10,7 +10,7 @@
 
 		<title>
 			{% block title %}
-				La boutique sénégalaise - 100% make in Sénégal
+				BJB COMPAGNIE - 100% make in Sénégal
 			{% endblock %}
 		</title>
 
@@ -35,21 +35,30 @@
 		</style>
 		<!-- Custom styles for this template -->
 		<link href="{{asset('css/carousel.css')}}" rel="stylesheet">
+		<link href="{{asset('css/myStyle.css')}}" rel="stylesheet">
+
 
 	</head>
 	<body>
 		<header>
 			<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-				<a class="navbar-brand" href="#">La boutique sénégalaise</a>
-
+				<a class="navbar-brand" href="{{'/'}}">BJB COMPAGNIE</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarCollapse">
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item active">
-							<a class="nav-link" href="#">Home
+							<a class="nav-link" href="{{path('products')}}">Nos produits
 								<span class="sr-only">(current)</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Qui sommes-nous ?
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Contact
 							</a>
 						</li>
 					</ul>
@@ -66,6 +75,9 @@
 
 					{% endif %}
 				</div>
+				<a href="{{path('cart')}}">
+					<img src="{{asset('images/shopping-cart.png')}}" class="panier-icon" alt="mon panier">
+				</a>
 			</nav>
 		</header>
 
@@ -131,7 +143,7 @@
 
 
 			<!-- Marketing messaging and featurettes
-																																																																																																																																																																																																																																		================================================== -->
+																																																																																																																																																																																																																																																																																																																									================================================== -->
 			<!-- Wrap the rest of the page in another container to center all the content. -->
 
 			<div class="container marketing {% if block('carousel') is  not defined %}mt-5{% endif %}"> {% block content %}{% endblock %}
@@ -139,7 +151,7 @@
 				<!-- /.container -->
 
 				<!-- FOOTER -->
-				<footer class="container">
+				<footer class="container footer-custom">
 					<p class="float-right">
 						<a href="#">Back to top</a>
 					</p>

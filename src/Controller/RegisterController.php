@@ -20,6 +20,8 @@ class RegisterController extends AbstractController
     {
         $this->em = $em;
     }
+
+
     /**
      * @Route("/inscription", name="register")
      */
