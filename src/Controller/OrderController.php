@@ -73,6 +73,8 @@ class OrderController extends AbstractController
 
 
             $order = new Order();
+            $reference = $date->format('dmY') . '-' . uniqid();
+            $order->setReference($reference);
             $order->setUser($this->getUser());
             $order->setCreateAt($date);
             $order->setCarrierName($carriers->getName());
@@ -100,7 +102,8 @@ class OrderController extends AbstractController
                 'form_order' => $form->createView(),
                 'cart' => $cart->getFull(),
                 'carrier' => $carriers,
-                'delivery' => $delivery_content
+                'delivery' => $delivery_content,
+                'reference' => $order->getReference()
             ]);
         }
 
