@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Order;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -17,6 +18,22 @@ class OrderRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Order::class);
+    }
+
+    /**
+     * findSuccessOrders(User $user)
+     *
+     * Permet d'afficher les commandes dans l'espace membre de l'utilisateur
+     */
+    public function findSuccessOrders(User $user)
+    {
+        return $this->createQueryBuilder('o')
+            ->andWhere('o.isPaid = 0')
+            ->andWhere('o.user = :user')
+            ->setParameter('user', $user)
+            ->orderBy('o.id', 'DESC')
+            ->getQuery()
+            ->getResult();
     }
 
     // /**
